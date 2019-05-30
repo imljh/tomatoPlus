@@ -18,7 +18,7 @@ startBtn.addEventListener("click", () => {
                 <input id="volume-range" type="range" min="0" max="1" step="0.01" value="1">
             </div>
         </div>
-        <audio id="audioplayer" loop>
+        <audio id="audioplayer" preload="auto" loop>
             <source src="./audio/FLYING IN THE SKY.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
