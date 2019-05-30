@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(0,0,0,0.5);
+}
+
+button {
+    outline: none;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#center-container, #mask {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#center-container::after, #mask::after {
+    content: "";
+    height: 100%;
+    margin: -0.5px;
+}
+
+#center-container::after,
+.center-block,
+#mask::after,
+#timer {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#audio-skin {
+    width: 100%;
+    height: auto;
+}
+
+#play-btn {
+    display: none;
+    border: none;
+    width: 130px;
+    height: 130px;
+    background-size: 100% 100%;
+}
+
+.play {
+    background: url(./i/play.png);    
+}
+
+.pause {
+    background: url(./i/pause.png);    
+}
+
+#volume-ctrl {
+    display: flex;
+    float: right;
+    margin: 10px auto;
+    width: 40%;
+    height: 22px;
+}
+
+#volume-icon {
+    height: 100%;
+    width: auto;
+}
+
+input[type="range"] {
+    margin-left: 5%;
+    width: calc(90% - 22px);
+}
+
+#volume-icon:hover, input[type="range"]:hover {
+    cursor: pointer;
+}
+
+#start-btn {
+    width: 200px;
+    height: 70px;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 25px;
+}
+
+#mask {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+}
+
+#timer {
+    width: 450px;
+    height: 350px;
+    border-radius: 10px;
+    background: #000;
+    color: #fff;
+}
+
+#timer>p {
+    font-size: 21px;
+}
+
+.work {
+    color: rgb(0, 225, 255);
+}
+
+.break {
+    color: rgb(125, 255, 125);
+}
+
+#time-counter {
+    margin-top: 20px;
+    font-size: 130px;
+}
+
+#stop-btn {
+    display: block;
+    margin: 20px auto;
+    width: 140px;
+    height: 40px;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+}
