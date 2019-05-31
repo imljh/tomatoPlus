@@ -1,5 +1,5 @@
-let pomodoro = 20 * 1000;
-let breakTime = 4 * 1000;
+let pomodoro = 25 * 60 * 1000;
+let breakTime = 5 * 60 * 1000;
 let tomatoLoopID, breakRoundID;
 let pomodoroDisplayID, breakDisplayID;
 
