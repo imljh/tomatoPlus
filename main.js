@@ -1,6 +1,7 @@
-let pomodoro = 25 * 60 * 1000;
-let breakTime = 5 * 60 * 1000;
-let pomodoroID, breakID;
+let pomodoro = 20 * 1000;
+let breakTime = 4 * 1000;
+let tomatoLoopID, breakRoundID;
+let pomodoroDisplayID, breakDisplayID;
 
 //start-btn
 const startBtn = document.getElementById("start-btn");
@@ -67,12 +68,10 @@ startBtn.addEventListener("click", () => {
 
     stopBtn.addEventListener("click", () => {
         document.body.removeChild(mask);
-        if (pomodoroID) {
-            clearInterval(pomodoroID);
-        }
-        if (breakID) {
-            clearInterval(breakID);
-        }
+        if(tomatoLoopID) clearTimeout(tomatoLoopID);
+        if(breakRoundID) clearTimeout(breakRoundID);
+        if(pomodoroDisplayID) clearInterval(pomodoroDisplayID);
+        if(breakDisplayID) clearInterval(breakDisplayID);
     });
 
     tomatoLoop(pomodoro, breakTime);
@@ -80,21 +79,21 @@ startBtn.addEventListener("click", () => {
 
 function tomatoLoop() {
     pomodoroRound();
-    setTimeout(breakRound, pomodoro);
-    setTimeout(tomatoLoop, pomodoro+breakTime);
+    breakRoundID = setTimeout(breakRound, pomodoro);
+    tomatoLoopID = setTimeout(tomatoLoop, pomodoro+breakTime);
 }
 
 function pomodoroRound() {
     //console.log("pomodoroRound");
-    if (breakID) {
-        clearInterval(breakID);
+    if (breakDisplayID) {
+        clearInterval(breakDisplayID);
     }
     let status = document.querySelector('#timer>p');
     status.className = 'work';
     status.textContent = 'work time';
     let pomodoroCD = countDown(pomodoro);
     displayTime(pomodoroCD);
-    pomodoroID = setInterval(displayTime, 1000, pomodoroCD);
+    pomodoroDisplayID = setInterval(displayTime, 1000, pomodoroCD);
 
     let player = document.getElementById("audioplayer");
     let playBtn = document.getElementById("play-btn");
@@ -104,15 +103,15 @@ function pomodoroRound() {
 
 function breakRound() {
     //console.log("breakRound");
-    if (pomodoroID) {
-        clearInterval(pomodoroID);
+    if (pomodoroDisplayID) {
+        clearInterval(pomodoroDisplayID);
     }
     let status = document.querySelector('#timer>p');
     status.className = 'break';
     status.textContent = 'break time';
     let breakCD = countDown(breakTime);
     displayTime(breakCD);
-    breakID = setInterval(displayTime, 1000, breakCD);
+    breakDisplayID = setInterval(displayTime, 1000, breakCD);
 
     let player = document.getElementById("audioplayer");
     let playBtn = document.getElementById("play-btn");
