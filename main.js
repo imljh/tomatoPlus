@@ -34,9 +34,7 @@ startBtn.addEventListener("click", () => {
     let volumePrev = player.volume;
 
     volumeRange.value = volumePrev;  //恢复音量
-    if (player.volume) {
-        volumeIcon.src = "./i/volume.png";
-    } else {
+    if (player.volume === 0) {
         volumeIcon.src = "./i/mute.png";
     }
 
