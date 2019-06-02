@@ -33,6 +33,13 @@ startBtn.addEventListener("click", () => {
     let volumeIcon = document.getElementById("volume-icon");
     let volumePrev = player.volume;
 
+    volumeRange.value = volumePrev;  //恢复音量
+    if (player.volume) {
+        volumeIcon.src = "./i/volume.png";
+    } else {
+        volumeIcon.src = "./i/mute.png";
+    }
+
     playBtn.addEventListener("click", () => {
         if (player.paused) {
             playBtn.className = "pause";
@@ -48,8 +55,12 @@ startBtn.addEventListener("click", () => {
             volumeIcon.src = "./i/mute.png";
             player.volume = volumeRange.value = 0;
         } else {
-            volumeIcon.src = "./i/volume.png";
-            player.volume = volumeRange.value = volumePrev;
+            if(volumePrev !== '0') {//volumePrev类型是string
+                volumeIcon.src = "./i/volume.png";
+                player.volume = volumeRange.value = volumePrev;         
+            } else {
+                //本来音量为0的时候do nothing
+            }
         }
     });
 
