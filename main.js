@@ -53,7 +53,7 @@ startBtn.addEventListener("click", () => {
             volumeIcon.src = "./i/mute.png";
             player.volume = volumeRange.value = 0;
         } else {
-            if(volumePrev && volumePrev !== '0') {//volumePrev类型是string
+            if(volumePrev !== 0) {
                 volumeIcon.src = "./i/volume.png";
                 player.volume = volumeRange.value = volumePrev;         
             } else {
@@ -63,7 +63,7 @@ startBtn.addEventListener("click", () => {
     });
 
     volumeRange.addEventListener("input", () => {
-        volumePrev = player.volume = volumeRange.value;
+        volumePrev = player.volume = parseFloat(volumeRange.value);
         if (player.volume) {
             volumeIcon.src = "./i/volume.png";
         } else {
