@@ -53,7 +53,7 @@ startBtn.addEventListener("click", () => {
             volumeIcon.src = "./i/mute.png";
             player.volume = volumeRange.value = 0;
         } else {
-            if(volumePrev !== '0') {//volumePrev类型是string
+            if(volumePrev && volumePrev !== '0') {//volumePrev类型是string
                 volumeIcon.src = "./i/volume.png";
                 player.volume = volumeRange.value = volumePrev;         
             } else {
